@@ -53,14 +53,9 @@
               <i class="fas fa-user-alt mr-2"></i> Alterar Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="login.php" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Logout
             </a>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -86,14 +81,6 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="../pages/widgets.html" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Principal
-                </p>
-              </a>
-            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="fas fa-shopping-bag mr-2"></i>
@@ -138,7 +125,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Adicionar Produto</li>
+                <li class="breadcrumb-item active">Adicionar Produtos</li>
               </ol>
             </div>
           </div>
