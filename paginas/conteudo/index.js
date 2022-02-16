@@ -1,29 +1,27 @@
 async function adicionarProduto() {
-    const nome = document.getElementById('inputName').value
-    const descricao = document.getElementById('inputInfo').value
-    const preco = document.getElementById('inputPrice').value
-    const marca = document.getElementById('marca').value
-    const categoria = document.getElementById('categoria').value
-    const estoque = document.getElementById('estoque').value
-    const aux = document.getElementById('inputFile').value
-    const arquivo = aux.split('\\').pop().split('/').pop()
+
     const token = localStorage.getItem('token')
-    const response = await fetch('https://projeto-bd2.herokuapp.com/produtos', {
+    const data = new FormData()
+
+    data.append('nome', document.getElementById('inputName').value)
+    data.append('descricao', document.getElementById('inputInfo').value)
+    data.append('preco', document.getElementById('inputPrice').value)
+    data.append('marca', document.getElementById('marca').value)
+    data.append('categoria', document.getElementById('categoria').value)
+    data.append('estoque', document.getElementById('estoque').value)
+    data.append('file', document.getElementById('inputFile').files[0])
+
+    await fetch('https://projeto-bd2.herokuapp.com/produtos', {
         headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
         },
         method: "POST",
-        body: {
-            //usuário preencheu no forms
-            nome,
-            descricao,
-            preco,
-            marca,
-            categoria,
-            estoque,
-        }
+        body: data
+    }).then(async (response) => {
+        console.log(await response.json())
+        alert("Produto adicionado com sucesso!")
+        window.location.href = "detalhes_produto.html"
     })
-    console.log(response)
 }
 
 async function editarProduto(produto){
@@ -32,12 +30,40 @@ async function editarProduto(produto){
     //redirecionamento pra pagina de produtos com js editar_produto.html
 }
 
+async function confirmarEdicao(){
+
+    const token = localStorage.getItem('token')
+    const data = new FormData()
+
+    data.append('nome', document.getElementById('inputName').value)
+    data.append('descricao', document.getElementById('inputInfo').value)
+    data.append('preco', document.getElementById('inputPrice').value)
+    data.append('marca', document.getElementById('marca').value)
+    data.append('categoria', document.getElementById('categoria').value)
+    data.append('estoque', document.getElementById('estoque').value)
+    data.append('file', document.getElementById('inputFile').files[0])
+
+    await fetch(`https://projeto-bd2.herokuapp.com/produtos/${localStorage.getItem('produto')}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+        method: "PUT",
+        body: data
+    }).then(async (response) => {
+        console.log(await response.json())
+        alert("Produto editado com sucesso!")
+        window.location.href = "detalhes_produto.html"
+    })
+
+}
+
+
 async function listarProdutos() {
 
     const tbody = document.createElement('tbody')
     const table = document.getElementById('listProducts')
 
-    const response = await fetch('https://projeto-bd2.herokuapp.com/produtos', {
+    await fetch('https://projeto-bd2.herokuapp.com/produtos', {
         method: "GET",
     }).then(async (response) => {
         const responseJson = await response.json();
@@ -67,12 +93,12 @@ async function listarProdutos() {
                       <span id="estoque">${item.estoque}</span>
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-info btn-sm" onclick="editarProduto(${item.id_produto});">
+                        <a class="btn btn-info btn-sm" onclick="editarProduto(${item.id_produto})">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Editar
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
+                        <a class="btn btn-danger btn-sm" onclick="deletarProduto(${item.id_produto})">
                             <i class="fas fa-trash">
                             </i>
                             Deletar
@@ -83,19 +109,43 @@ async function listarProdutos() {
         }
     })
 }
+async function deletarProduto(produto){
+    const confirmed = confirm('Você deseja deletar o produto?')
+    if (confirmed) {
+        await fetch(`https://projeto-bd2.herokuapp.com/produtos/${produto}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+            method: "DELETE",
+        }).then(() => {
+            alert('Produto deletado com sucesso.')
+            window.location.reload()
+        })
+    }
+}
 async function login(){
     const email = document.getElementById('inputLogin').value
     const senha = document.getElementById('inputPassword').value
+    console.log(email, senha)
+    const data = {            email,
+        senha,}
     const response = await fetch('https://projeto-bd2.herokuapp.com/login', {
+        headers:{'Content-Type': 'application/json',},
         method: "POST",
-        body: {
-            email,
-            senha,
-        }
+        body: JSON.stringify(data)
     }).then(async (response) => {
-        const data = response.json()
+        const data = await response.json()
+        console.log(data)
         localStorage.setItem('token', data.token)
+
+        window.location.href = 'detalhes_produto.html'
+
     })
 
+}
+
+function logout(){
+    localStorage.setItem('token','')
+    window.location.href = "login.html"
 }
 listarProdutos()
