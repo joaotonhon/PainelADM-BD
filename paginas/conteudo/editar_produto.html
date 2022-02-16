@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -53,9 +55,10 @@
               <i class="fas fa-user-alt mr-2"></i> Alterar Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="login.php" class="dropdown-item">
+            <a href="login.html" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Logout
             </a>
+        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -63,7 +66,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a href="#" class="brand-link">
         <span class="brand-text font-weight-light">Painel Admin Bullshop</span>
       </a>
 
@@ -90,19 +93,12 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="add_produto.php" class="nav-link">
+                  <a href="add_produto.html" class="nav-link">
                     <i class="fas fa-cart-plus mr-1 "></i>
                     <p>Adicionar Produtos</p>
                   </a>
-                </li>
                 <li class="nav-item">
-                  <a href="editar_produto.php" class="nav-link">
-                    <i class="far fa-edit mr-1"></i>
-                    <p>Editar Produtos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="detalhes_produto.php" class="nav-link">
+                  <a href="detalhes_produto.html" class="nav-link">
                     <i class="fas fa-list-ul mr-1"></i>
                     <p>Visualizar Produtos</p>
                   </a>
@@ -125,18 +121,18 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Adicionar Produtos</li>
+                <li class="breadcrumb-item active">Editar Produtos</li>
               </ol>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="row d-flex align-content-stretch flex-wrap">
-          <div class="col-md-6">
-            <div class="card card-primary">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+        <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title"> Adicionar Produto</h3>
 
@@ -153,115 +149,84 @@
                   <input type="text" id="inputName" class="form-control" placeholder="Insira o nome do produto">
                 </div>
                 <div class="form-group">
-                  <label for="inputDescription">Descrição do Produto</label>
-                  <textarea id="inputDescription" class="form-control" rows="4" placeholder="Insira a descrição do produto"></textarea>
+                  <label for="inputInfo">Descrição do Produto</label>
+                  <textarea id="inputInfo" class="form-control" rows="4" placeholder="Insira a descrição do produto"></textarea>
                 </div>
-                <div class="form-group">
-                  <label for="inputFile">Foto do Produto</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputFile">
-                      <label class="custom-file-label" for="inputFile">Escolha uma foto</label>
-                    </div>
-                    <div class="input-group-append">
-                      <span class="input-group-text">Upload</span>
-                    </div>
-                  </div>
-                </div>
+                <label for="inputFile">Escolha uma imagem para o produto:</label>
+
+               <input type="file"
+                id="inputFile" name="inputFile"
+                accept="image/png, image/jpeg">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Insira o preço do produto">
+                  <input id="inputPrice" type="text" class="form-control" placeholder="Insira o preço do produto">
                   <div class="input-group-append">
                     <span class="input-group-text">,00</span>
                   </div>
                 </div>
 
-                <!-- checkbox -->
-                <div class="form-group">
-                  <label for="inputFile">Marca</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Adidas</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Nike</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Puma</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Oakley</label>
-                  </div>
+                  <!-- checkbox -->
+                  <div class="form-group">
+                  <label>Marca</label>
+                  <select class="form-control select2" style="width: 100%;" id="marca">
+                    <option selected="selected">Selecione uma Marca</option>
+                    <option value="1">Adidas</option>
+                    <option value="2">Nike</option>
+                    <option value="3">Puma</option>
+                    <option value="4">Oakley</option>
+                    <option value="5">Asics</option>
+                  </select>
                 </div>
 
               </div>
 
             </div>
-            </div>
-            <div class="col-md-6">
-            <div class="card card-secondary">
-              <div class="card-header">
-                <h3 class="card-title">Categoria e Estoque</h3>
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Categoria e Estoque</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="inputFile">Categoria</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Shorts</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Camisetas</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Tênis</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Chinelos</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Mochilas</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">Meias</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputSpent">Quantidade em Estoque</label>
-                  <input type="number" id="inputSpentBudget" class="form-control" value="1" step="1">
-                </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            </div>
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-6">
-                  <a href="#" class="btn btn-secondary">Cancelar</a>
-                  <input type="submit" value="Adicionar" class="btn btn-success float-right">
-                </div>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
               </div>
             </div>
+            <div class="card-body">
+            <div class="form-group">
+                  <label>Categoria</label>
+                  <select class="form-control select2" style="width: 100%;" id="categoria">
+                    <option selected="selected">Selecione uma Categoria</option>
+                    <option value="1">Camisetas</option>
+                    <option value="2">Shorts</option>
+                    <option value="3">Tênis</option>
+                    <option value="4">Chuteiras</option>
+                    <option value="5">Mochilas</option>
+                    <option value="6">Bonés</option>
+                  </select>
+                </div>
+              <div class="form-group">
+                <label for="estoque">Quantidade em Estoque</label>
+                <input type="number" id="estoque" class="form-control" value="1" step="1">
+              </div>
+      
+            </div>
+            <!-- /.card-body -->
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="#" class="btn btn-secondary">Cancelar</a>
+          <input type="submit" value="Salvar Alterações" class="btn btn-success float-right">
+        </div>
+      </div>
     </section>
-    </div>
+    <!-- /.content -->
   </div>
-
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -313,6 +278,7 @@
   <script src="../../dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../../dist/js/pages/dashboard.js"></script>
+  <script src="edit.js"></script>
 </body>
 
 </html>

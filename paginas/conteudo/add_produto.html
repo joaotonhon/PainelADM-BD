@@ -53,10 +53,9 @@
               <i class="fas fa-user-alt mr-2"></i> Alterar Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="login.php" class="dropdown-item">
+            <a href="login.html" class="dropdown-item">
               <i class="fas fa-sign-out-alt mr-2"></i> Logout
             </a>
-        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -64,7 +63,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a href="#" class="brand-link">
         <span class="brand-text font-weight-light">Painel Admin Bullshop</span>
       </a>
 
@@ -83,8 +82,6 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-            </li>
-            <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="fas fa-shopping-bag mr-2"></i>
                 <p>
@@ -93,19 +90,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="add_produto.php" class="nav-link">
+                  <a href="add_produto.html" class="nav-link">
                     <i class="fas fa-cart-plus mr-1 "></i>
                     <p>Adicionar Produtos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="editar_produto.php" class="nav-link">
-                    <i class="far fa-edit mr-1"></i>
-                    <p>Editar Produtos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="detalhes_produto.php" class="nav-link">
+                  <a href="detalhes_produto.html" class="nav-link">
                     <i class="fas fa-list-ul mr-1"></i>
                     <p>Visualizar Produtos</p>
                   </a>
@@ -128,85 +119,114 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Visualizar Produtos</li>
+                <li class="breadcrumb-item active">Adicionar Produtos</li>
               </ol>
             </div>
           </div>
         </div>
       </section>
 
-    <!-- Main content -->
-    <section class="content">
+      <!-- Main content -->
+      <section class="content">
+        <div class="row d-flex align-content-stretch flex-wrap">
+          <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title"> Adicionar Produto</h3>
 
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Produtos</h3>
+                <!--Card Central -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Nome do Produto</label>
+                  <input type="text" id="inputName" class="form-control" placeholder="Insira o nome do produto">
+                </div>
+                <div class="form-group">
+                  <label for="inputInfo">Descrição do Produto</label>
+                  <textarea id="inputInfo" class="form-control" rows="4" placeholder="Insira a descrição do produto"></textarea>
+                </div>
+                <label for="inputFile">Escolha uma imagem para o produto:</label>
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body p-0">
-          <table class="table table-striped projects">
-              <thead>
-                  <tr>
-                      <th style="width: 1%">
-                          #
-                      </th>
-                      <th style="width: 20%">
-                          Nome
-                      </th>
-                      <th style="width: 30%">
-                          Marca
-                      </th>
-                      <th>
-                          Estoque
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>
-                          #
-                      </td>
-                      <td>
-                          <a>
-                          Produto Teste
-                          </a>
-                          <br/>
-                      </td>
-                      <td class="project-state" style="text-align: left;">
-                          <span class="badge badge-success">Success</span>
-                      </td>
-                      <td>
-                        <span id="estoque">1</span>
-                      </td>
-                      <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="editar_produto.php">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Editar
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="#">
-                              <i class="fas fa-trash">
-                              </i>
-                              Deletar
-                          </a>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+               <input type="file"
+                id="inputFile" name="inputFile"
+                accept="image/png, image/jpeg">
 
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input id="inputPrice" type="text" class="form-control" placeholder="Insira o preço do produto">
+                  <div class="input-group-append">
+                    <span class="input-group-text">,00</span>
+                  </div>
+                </div>
+
+                <!-- checkbox -->
+                <div class="form-group">
+                  <label>Marca</label>
+                  <select class="form-control select2" style="width: 100%;" id="marca">
+                    <option selected="selected">Selecione uma Marca</option>
+                    <option value="1">Adidas</option>
+                    <option value="2">Nike</option>
+                    <option value="3">Puma</option>
+                    <option value="4">Oakley</option>
+                    <option value="5">Asics</option>
+                  </select>
+                </div>
+
+              </div>
+
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Categoria e Estoque</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+              <div class="form-group">
+                  <label>Categoria</label>
+                  <select class="form-control select2" style="width: 100%;" id="categoria">
+                    <option selected="selected">Selecione uma Categoria</option>
+                    <option value="1">Camisetas</option>
+                    <option value="2">Shorts</option>
+                    <option value="3">Tênis</option>
+                    <option value="4">Chuteiras</option>
+                    <option value="5">Mochilas</option>
+                    <option value="6">Bonés</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputSpent">Quantidade em Estoque</label>
+                  <input type="number" min="0" id="estoque" class="form-control" value="1" step="1">
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-6">
+                  <a href="#" class="btn btn-secondary">Cancelar</a>
+                  <input type="submit" value="Adicionar" class="btn btn-success float-right" onclick="adicionarProduto()">
+                </div>
+              </div>
+            </div>
     </section>
-    <!-- /.content -->
+    </div>
   </div>
+
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
@@ -258,5 +278,8 @@
   <script src="../../dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../../dist/js/pages/dashboard.js"></script>
+
+  <script src="index.js"></script>
 </body>
+
 </html>
